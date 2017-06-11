@@ -11,11 +11,11 @@ class Fizzbuzz
     if number == 0 # guard clause against input of 0
       return 0
     elsif number % (@lower_limit*@upper_limit) == 0 # immediately guards against multiples of both numbers
-      return 'fizzbuzz'
+      return 'FizzBuzz'
     elsif number % (@upper_limit) == 0
-      return 'buzz'
+      return 'Buzz'
     elsif number % (@lower_limit) == 0
-      return 'fizz'
+      return 'Fizz'
     else
       return number
     end

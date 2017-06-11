@@ -1,6 +1,4 @@
 require 'spec_helper' #requires spec_helper file
-require 'web_helper' #require web-helper to stream line rspec testing
-require './src/fizzbuzz/fizzbuzz.rb' # requires fizzbuzz source file for rspec testing
 
 describe Fizzbuzz do
 
@@ -27,15 +25,15 @@ describe Fizzbuzz do
     end
 
     it "returns fizz when handed 3" do
-      expect(@class.fizzbuzz(3)).to eq('fizz')
+      expect(@class.fizzbuzz(3)).to eq('Fizz')
     end
 
-    it "returns fizz when handed 27" do
-      expect(@class.fizzbuzz(27)).to eq('fizz')
+    it "returns Fizz when handed 27" do
+      expect(@class.fizzbuzz(27)).to eq('Fizz')
     end
 
-    it "returns fizz when handed a random multiple of 3" do
-      expect(@class.fizzbuzz(@multiple_3)).to eq('fizz')
+    it "returns Fizz when handed a random multiple of 3" do
+      expect(@class.fizzbuzz(@multiple_3)).to eq('Fizz')
     end
   end
 
@@ -45,15 +43,15 @@ describe Fizzbuzz do
     end
 
     it "returns buzz when handed 5" do
-      expect(@class.fizzbuzz(5)).to eq('buzz')
+      expect(@class.fizzbuzz(5)).to eq('Buzz')
     end
 
-    it "returns buzz when handed 35" do
-      expect(@class.fizzbuzz(35)).to eq('buzz')
+    it "returns Buzz when handed 35" do
+      expect(@class.fizzbuzz(35)).to eq('Buzz')
     end
 
-    it "returns buzz when handed a random multiple of 5" do
-      expect(@class.fizzbuzz(@multiple_5)).to eq('buzz')
+    it "returns Buzz when handed a random multiple of 5" do
+      expect(@class.fizzbuzz(@multiple_5)).to eq('Buzz')
     end
   end
 
@@ -63,15 +61,15 @@ describe Fizzbuzz do
     end
 
     it "returns buzz when handed 5" do
-      expect(@class.fizzbuzz(15)).to eq('fizzbuzz')
+      expect(@class.fizzbuzz(15)).to eq('FizzBuzz')
     end
 
     it "returns buzz when handed 35" do
-      expect(@class.fizzbuzz(60)).to eq('fizzbuzz')
+      expect(@class.fizzbuzz(60)).to eq('FizzBuzz')
     end
 
-    it "returns buzz when handed a random multiple of 5" do
-      expect(@class.fizzbuzz(@multiple_15)).to eq('fizzbuzz')
+    it "returns buzz when handed a random multiple of 15" do
+      expect(@class.fizzbuzz(@multiple_15)).to eq('FizzBuzz')
     end
   end
 
