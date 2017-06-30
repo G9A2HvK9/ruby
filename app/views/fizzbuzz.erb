@@ -27,15 +27,18 @@
     </div>
 
     <div id="functionality">
-      <form id="fizzbuzz_input">
+      <form id="fizzbuzz_input" action="/projects/fizzbuzz" method="post">
         <label for="lower_limit">Test Range</label>
-        <input type="text" name="lower_limit" placeholder="Lower Limit">
-        <input type="text" name="upper_limit" placeholder="Upper Limit">
+        <input type="text" name="lower_limit" placeholder="Lower Limit" id="fizzbuzz_lower_limit">
+        <input type="text" name="upper_limit" placeholder="Upper Limit" id="fizzbuzz_upper_limit">
         <br><label for="lower_value">Test Values</label>
-        <input type="text" name="lower_value" placeholder="Lower Value">
-        <input type="text" name="upper_value" placeholder="Upper Value">
-        <br><input type="submit" name="fizzbuzz_submit" value="Run Fizzbuzz">
+        <input type="text" name="lower_value" placeholder="Lower Value" id="fizzbuzz_lower_value">
+        <input type="text" name="upper_value" placeholder="Upper Value" id="fizzbuzz_upper_value">
+        <br><input type="submit" name="fizzbuzz_submit" value="Run FizzBuzz" id="fizzbuzz_submit_button">
       </form>
+    </div>
+
+    <div id="results">
     </div>
 
   </body>

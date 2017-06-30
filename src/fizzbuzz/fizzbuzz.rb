@@ -1,24 +1,38 @@
 class Fizzbuzz
-  attr_reader :lower_limit, :upper_limit
+  attr_reader :lower_value, :upper_value, :game_array
 
-  def initialize(lower_limit, upper_limit)
-    @lower_limit = lower_limit
-    @upper_limit = upper_limit
+  def self.create(lower_value, upper_value, lower_limit, upper_limit)
+    @fizzbuzz_instance ||= Fizzbuzz.new(lower_value, upper_value, lower_limit, upper_limit)
   end
 
-  def fizzbuzz(number)
-
+  def run(number)
     if number == 0 # guard clause against input of 0
       return 0
-    elsif number % (@lower_limit*@upper_limit) == 0 # immediately guards against multiples of both numbers
+    elsif multiple_of?(number, (@lower_value*@upper_value)) # returns FizzBuzz if multiple of both values
       return 'FizzBuzz'
-    elsif number % (@upper_limit) == 0
+    elsif multiple_of?(number, @upper_value) # returns Buzz if multiple of upper value
       return 'Buzz'
-    elsif number % (@lower_limit) == 0
+    elsif multiple_of?(number, @lower_value) # returns Fizz if multiple of lower value
       return 'Fizz'
-    else
+    else # returns just the number in all other cases
       return number
     end
+  end
+
+  private
+
+  def initialize(lower_value, upper_value, lower_limit, upper_limit) # initializes lower and upper value to return Fizz and Buzz respectiveluy.
+    @lower_value = lower_value
+    @upper_value = upper_value
+    @game_array = (lower_limit..upper_limit).to_a # create game array of all numbers between lower_limit and upper_limit (inclusive)
+  end
+
+  def self.instance # lets assigns class to its own instance variable for persistence in controller
+    @fizzbuzz_instance
+  end
+
+  def multiple_of?(number, value) # helper function to determine whether current number is divisible by the respective limit
+    number % value == 0
   end
 
 end

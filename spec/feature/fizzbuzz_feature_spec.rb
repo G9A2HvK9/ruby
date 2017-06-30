@@ -42,6 +42,24 @@ feature 'fizzbuzz Feature' do
 
   scenario 'The functionality section displays correctly' do
     expect(page).to have_css('div#functionality', text: 'Test Range Test Values')
+    expect(page).to have_css('input#fizzbuzz_lower_limit')
+    expect(page).to have_css('input#fizzbuzz_upper_limit')
+    expect(page).to have_css('input#fizzbuzz_lower_value')
+    expect(page).to have_css('input#fizzbuzz_upper_value')
+    expect(page).to have_button('Run FizzBuzz')
+  end
+
+  scenario 'There exists a results div' do
+    expect(page).to have_css('div#results')
+  end
+
+  scenario 'When fizzbuzz is run correctly, the result displays in the results div' do
+    fill_in('lower_limit', with: 0)
+    fill_in('upper_limit', with: 15)
+    fill_in('lower_value', with: 3)
+    fill_in('upper_value', with: 5)
+    click_button('Run FizzBuzz')
+    expect('div#results').to have_content('0, 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz')
   end
 
 end

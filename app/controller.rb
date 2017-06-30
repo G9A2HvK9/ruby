@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require './app/helper.rb'
 
 class Ruby < Sinatra::Base
 
@@ -12,14 +13,18 @@ class Ruby < Sinatra::Base
     erb(:projects)
   end
 
-# Fizzbuzz route. This is the route that will hold all functionality of the fizzbuzz challenge
+# This route holds all fizzbuzz functionality
 
-  get '/projects/fizzbuzz' do
-    erb(:fizzbuzz)
-  end
+    before do
+      @fizzbuzz = Fizzbuzz.instance
+    end
 
-  post '/projects/fizzbuzz' do
-    @fizzbuzz = FizzBuzz.new(params[:lower_limit, :upper_limit])
-  end
+    get '/projects/fizzbuzz' do
+      erb(:fizzbuzz)
+    end
+
+    post '/projects/fizzbuzz' do
+      @fizzbuzz = Fizzbuzz.create(params[:lower_value], params[:upper_value])
+    end
 
 end
