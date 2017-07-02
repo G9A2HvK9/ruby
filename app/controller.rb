@@ -16,15 +16,19 @@ class Ruby < Sinatra::Base
 # This route holds all fizzbuzz functionality
 
     before do
-      @fizzbuzz = Fizzbuzz.instance
+      @fizzbuzz_runner = Fizzbuzz_Runner.instance
     end
 
     get '/projects/fizzbuzz' do
+      p "get route: #{@fizzbuzz_runner}"
       erb(:fizzbuzz)
     end
 
     post '/projects/fizzbuzz' do
-      @fizzbuzz = Fizzbuzz.create(params[:lower_value], params[:upper_value])
+      @fizzbuzz_runner = Fizzbuzz_Runner.create(params[:lower_value].to_i, params[:upper_value].to_i, params[:lower_limit].to_i, params[:upper_limit].to_i)
+      p "post route: #{@fizzbuzz_runner.initial}"
+      @fizzbuzz_runner.execute
+      redirect('/projects/fizzbuzz')
     end
 
 end

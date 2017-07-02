@@ -2,4 +2,4 @@
 
 # Fizzbuzz project file
 
-require './src/fizzbuzz/fizzbuzz.rb'
+require './src/fizzbuzz/fizzbuzz_runner.rb'

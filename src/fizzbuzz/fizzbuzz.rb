@@ -1,8 +1,12 @@
 class Fizzbuzz
   attr_reader :lower_value, :upper_value, :game_array
 
-  def self.create(lower_value, upper_value, lower_limit, upper_limit)
-    @fizzbuzz_instance ||= Fizzbuzz.new(lower_value, upper_value, lower_limit, upper_limit)
+  def self.create(lower_value, upper_value)
+    @fizzbuzz_instance ||= Fizzbuzz.new(lower_value, upper_value,)
+  end
+
+  def self.instance # lets assigns class to its own instance variable for persistence in controller
+    @fizzbuzz_instance
   end
 
   def run(number)
@@ -21,14 +25,9 @@ class Fizzbuzz
 
   private
 
-  def initialize(lower_value, upper_value, lower_limit, upper_limit) # initializes lower and upper value to return Fizz and Buzz respectiveluy.
+  def initialize(lower_value, upper_value) # initializes lower and upper value to return Fizz and Buzz respectiveluy.
     @lower_value = lower_value
     @upper_value = upper_value
-    @game_array = (lower_limit..upper_limit).to_a # create game array of all numbers between lower_limit and upper_limit (inclusive)
-  end
-
-  def self.instance # lets assigns class to its own instance variable for persistence in controller
-    @fizzbuzz_instance
   end
 
   def multiple_of?(number, value) # helper function to determine whether current number is divisible by the respective limit

@@ -3,7 +3,7 @@ require 'spec_helper' #requires spec_helper file
 describe Fizzbuzz do
 
   before do
-    @fizzbuzz = Fizzbuzz.new(3, 5, 0, 15)
+    @fizzbuzz = Fizzbuzz.new(3, 5)
   end
 
   it 'exists' do
@@ -15,7 +15,6 @@ describe Fizzbuzz do
     it 'has 3 attributes - lower_value, upper_value and game_array' do
       expect(@fizzbuzz.lower_value).to eq(3)
       expect(@fizzbuzz.upper_value).to eq(5)
-      expect(@fizzbuzz.game_array).to eq([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
     end
 
     it 'has a method called fizzbuzz which takes one argument' do
