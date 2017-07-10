@@ -22,10 +22,10 @@ class Ruby < Sinatra::Base
       erb(:fizzbuzz)
     end
 
-    post '/projects/fizzbuzz' do
+    post '/projects/fizzbuzz' do # clears fizzbuzz results session and sets new session according to params from get route
       session.clear
       session[:result] = Fizzbuzz_Runner.new(params[:lower_value].to_i, params[:upper_value].to_i, params[:lower_limit].to_i, params[:upper_limit].to_i).execute
-      redirect('/projects/fizzbuzz')
+      redirect('/projects/fizzbuzz') # redirects back to get route and displays results
     end
 
 end

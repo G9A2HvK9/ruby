@@ -15,7 +15,7 @@ feature 'fizzbuzz Feature' do
     expect(page).to have_css('div#navbar', text: 'HomeProjects')
   end
 
-  scenario 'The "Projects" link in the navbar is working and can be clicked' do
+  scenario 'The "Home" link in the navbar is working and can be clicked' do
     click_link('Home')
     expect(page.status_code).to be(200)
     expect(page).to have_current_path('/')
@@ -53,13 +53,32 @@ feature 'fizzbuzz Feature' do
     expect(page).to have_css('div#results')
   end
 
+  scenario 'When I first enter the page, a message tells me where the result will be displayed' do
+    expect(page).to have_css('div#results', text: 'Your result will appear here')
+  end
+
   scenario 'When fizzbuzz is run correctly, the result displays in the results div' do
     fill_in('lower_limit', with: 0)
     fill_in('upper_limit', with: 15)
     fill_in('lower_value', with: 3)
     fill_in('upper_value', with: 5)
     click_button('Run FizzBuzz')
-    expect('div#results').to have_content('0 1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz')
+    expect(page).to have_css('ul#fizzbuzz_list', text: '012Fizz4BuzzFizz78FizzBuzz11Fizz1314FizzBuzz')
+  end
+
+  scenario 'When fizzbuzz is run correctly, the result displays in the results div, and changes when I enter new values' do
+    fill_in('lower_limit', with: 0)
+    fill_in('upper_limit', with: 15)
+    fill_in('lower_value', with: 3)
+    fill_in('upper_value', with: 5)
+    click_button('Run FizzBuzz')
+    expect(page).to have_css('ul#fizzbuzz_list', text: '012Fizz4BuzzFizz78FizzBuzz11Fizz1314FizzBuzz')
+
+    fill_in('lower_limit', with: 80)
+    fill_in('upper_limit', with: 95)
+    fill_in('lower_value', with: 3)
+    fill_in('upper_value', with: 5)
+    expect(page).to have_css('ul#fizzbuzz_list', text: '012Fizz4BuzzFizz78FizzBuzz11Fizz1314FizzBuzz')
   end
 
 end
