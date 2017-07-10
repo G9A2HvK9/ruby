@@ -59,7 +59,7 @@ feature 'fizzbuzz Feature' do
     fill_in('lower_value', with: 3)
     fill_in('upper_value', with: 5)
     click_button('Run FizzBuzz')
-    expect('div#results').to have_content('0, 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz')
+    expect('div#results').to have_content('0 1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz')
   end
 
 end

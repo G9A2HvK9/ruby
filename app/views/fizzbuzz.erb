@@ -39,7 +39,11 @@
     </div>
 
     <div id="results">
-      <%= @fizzbuzz_runner if @fizzbuzz_runner%>
+      <% if @html_display %>
+        <%= @html_display %>
+      <% else %>
+        <%= "<h3>Your result will appear here</h3>" %>
+      <%end%>
     </div>
 
   </body>

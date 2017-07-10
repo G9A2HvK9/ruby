@@ -13,9 +13,9 @@ describe Fizzbuzz_Runner do
 
   describe "#new" do
 
-    it "has 2 attributes which are arrays - initial and final" do
+    it "has 2 attributes which are arrays - initial and html_array" do
       expect(@fizzbuzz_runner.initial).to eq([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
-      expect(@fizzbuzz_runner.final).to eq([])
+      expect(@fizzbuzz_runner.html_array).to eq([])
     end
 
     it "has an attribute @fizzbuzz which is an instance of the FizzBuzz class" do
@@ -30,9 +30,9 @@ describe Fizzbuzz_Runner do
 
       context "when handed arguments 3, 5, 0 and 15" do
 
-        it "stores the correct responses in the @final array" do
+        it "stores the correct responses in the @html_array" do
           @fizzbuzz_runner.execute
-          expect(@fizzbuzz_runner.final).to eq([0, 1, 2, "Fizz", 4, "Buzz", "Fizz", 7, 8, "Fizz", "Buzz", 11, "Fizz", 13, 14, "FizzBuzz"])
+          expect(@fizzbuzz_runner.display_string).to eq("<ul id=\"fizzbuzz_list\"><li>0</li><li>1</li><li>2</li><li>Fizz</li><li>4</li><li>Buzz</li><li>Fizz</li><li>7</li><li>8</li><li>Fizz</li><li>Buzz</li><li>11</li><li>Fizz</li><li>13</li><li>14</li><li>FizzBuzz</li></ul>")
         end
       end
     end

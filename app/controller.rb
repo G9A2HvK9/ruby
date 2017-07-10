@@ -3,6 +3,8 @@ require './app/helper.rb'
 
 class Ruby < Sinatra::Base
 
+  enable :sessions
+
 # Home route. This is the baseline route for ruby web app.
 
   get '/' do
@@ -15,19 +17,14 @@ class Ruby < Sinatra::Base
 
 # This route holds all fizzbuzz functionality
 
-    before do
-      @fizzbuzz_runner = Fizzbuzz_Runner.instance
-    end
-
     get '/projects/fizzbuzz' do
-      p "get route: #{@fizzbuzz_runner}"
+      @html_display = session[:result]
       erb(:fizzbuzz)
     end
 
     post '/projects/fizzbuzz' do
-      @fizzbuzz_runner = Fizzbuzz_Runner.create(params[:lower_value].to_i, params[:upper_value].to_i, params[:lower_limit].to_i, params[:upper_limit].to_i)
-      p "post route: #{@fizzbuzz_runner.initial}"
-      @fizzbuzz_runner.execute
+      session.clear
+      session[:result] = Fizzbuzz_Runner.new(params[:lower_value].to_i, params[:upper_value].to_i, params[:lower_limit].to_i, params[:upper_limit].to_i).execute
       redirect('/projects/fizzbuzz')
     end
 
