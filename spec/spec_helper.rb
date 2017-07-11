@@ -8,10 +8,15 @@ require 'capybara/rspec'
 # Required files from within the project. The first block refers to helpers.
 # The second block refers to actual data such as controllers and programs.
 
-require 'web_helper' # Require web-helper to stream line rspec testing
+require 'web_helper' # Requires web-helper to stream line rspec testing
 
 require './app/controller' # Requires the app controller for web feature testing with capybara.
-require './src/fizzbuzz/fizzbuzz'  # requires fizzbuzz source file for rspec testing
+
+require './src/fizzbuzz/fizzbuzz'  # Requires fizzbuzz/fizzbuzz source file for rspec testing
+require './src/fizzbuzz/fizzbuzz_runner' # Requires fizzbuzz/fizzbuzz_runner source file for rspec testing
+
+require './src/bowling/game' # Requires bowling/game source file for rspec testing
+
 
 Capybara.app = Ruby
 

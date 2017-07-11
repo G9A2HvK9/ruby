@@ -1,5 +1,4 @@
-require './src/fizzbuzz/fizzbuzz_runner.rb'
-
+require 'spec_helper' #requires spec_helper file
 
 describe Fizzbuzz_Runner do
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Home Feature' do
+feature 'Projects Feature' do
 
   before do
     visit('/projects')
