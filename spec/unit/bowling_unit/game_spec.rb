@@ -11,7 +11,7 @@ describe Bowling_game do
   end
 
   describe "#new" do
-    
+
   end
 
 end

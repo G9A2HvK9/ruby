@@ -16,6 +16,7 @@ require './src/fizzbuzz/fizzbuzz'  # Requires fizzbuzz/fizzbuzz source file for 
 require './src/fizzbuzz/fizzbuzz_runner' # Requires fizzbuzz/fizzbuzz_runner source file for rspec testing
 
 require './src/bowling/game' # Requires bowling/game source file for rspec testing
+require './src/bowling/frame.rb' # Requires bowling/frame source file for rspec testing
 
 
 Capybara.app = Ruby
