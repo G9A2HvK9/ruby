@@ -2,12 +2,10 @@ require 'spec_helper' #requires spec_helper file
 
 describe Bowling_game do
 
-  before do
-    @game = Bowling_game.new
-  end
+  let( :game ){ Bowling_game.new() }
 
   it "exists" do
-    expect(@game).to be_an_instance_of(Bowling_game)
+    expect(game).to be_an_instance_of(Bowling_game)
   end
 
   describe "#new" do

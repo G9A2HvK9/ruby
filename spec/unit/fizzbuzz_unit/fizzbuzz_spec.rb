@@ -2,23 +2,21 @@ require 'spec_helper' #requires spec_helper file
 
 describe Fizzbuzz do
 
-  before do
-    @fizzbuzz = Fizzbuzz.new(3, 5)
-  end
+  let( :fizzbuzz ){ Fizzbuzz.new(3, 5) }
 
   it 'exists' do
-    expect(@fizzbuzz).to be_a_kind_of(Fizzbuzz)
+    expect(fizzbuzz).to be_a_kind_of(Fizzbuzz)
   end
 
   describe "#new" do
 
     it 'has 3 attributes - lower_value, upper_value and game_array' do
-      expect(@fizzbuzz.lower_value).to eq(3)
-      expect(@fizzbuzz.upper_value).to eq(5)
+      expect(fizzbuzz.lower_value).to eq(3)
+      expect(fizzbuzz.upper_value).to eq(5)
     end
 
     it 'has a method called fizzbuzz which takes one argument' do
-      expect(@fizzbuzz).to respond_to(:run).with(1).argument
+      expect(fizzbuzz).to respond_to(:run).with(1).argument
     end
 
   end
@@ -31,15 +29,15 @@ describe Fizzbuzz do
       end
 
       it "returns fizz when handed 3" do
-        expect(@fizzbuzz.run(3)).to eq('Fizz')
+        expect(fizzbuzz.run(3)).to eq('Fizz')
       end
 
       it "returns Fizz when handed 27" do
-        expect(@fizzbuzz.run(27)).to eq('Fizz')
+        expect(fizzbuzz.run(27)).to eq('Fizz')
       end
 
       it "returns Fizz when handed a random multiple of 3" do
-        expect(@fizzbuzz.run(@multiple_3)).to eq('Fizz')
+        expect(fizzbuzz.run(@multiple_3)).to eq('Fizz')
       end
     end
 
@@ -49,15 +47,15 @@ describe Fizzbuzz do
       end
 
       it "returns buzz when handed 5" do
-        expect(@fizzbuzz.run(5)).to eq('Buzz')
+        expect(fizzbuzz.run(5)).to eq('Buzz')
       end
 
       it "returns Buzz when handed 35" do
-        expect(@fizzbuzz.run(35)).to eq('Buzz')
+        expect(fizzbuzz.run(35)).to eq('Buzz')
       end
 
       it "returns Buzz when handed a random multiple of 5" do
-        expect(@fizzbuzz.run(@multiple_5)).to eq('Buzz')
+        expect(fizzbuzz.run(@multiple_5)).to eq('Buzz')
       end
     end
 
@@ -67,15 +65,15 @@ describe Fizzbuzz do
       end
 
       it "returns buzz when handed 5" do
-        expect(@fizzbuzz.run(15)).to eq('FizzBuzz')
+        expect(fizzbuzz.run(15)).to eq('FizzBuzz')
       end
 
       it "returns buzz when handed 35" do
-        expect(@fizzbuzz.run(60)).to eq('FizzBuzz')
+        expect(fizzbuzz.run(60)).to eq('FizzBuzz')
       end
 
       it "returns buzz when handed a random multiple of 15" do
-        expect(@fizzbuzz.run(@multiple_15)).to eq('FizzBuzz')
+        expect(fizzbuzz.run(@multiple_15)).to eq('FizzBuzz')
       end
     end
 
@@ -85,15 +83,15 @@ describe Fizzbuzz do
       end
 
       it "returns 0 when handed 0" do
-        expect(@fizzbuzz.run(0)).to eq(0)
+        expect(fizzbuzz.run(0)).to eq(0)
       end
 
       it "returns 40 when handed 44" do
-        expect(@fizzbuzz.run(44)).to eq(44)
+        expect(fizzbuzz.run(44)).to eq(44)
       end
 
       it "returns non_multiple number when handed non_multiple number" do
-        expect(@fizzbuzz.run(@non_multiple)).to eq(@non_multiple)
+        expect(fizzbuzz.run(@non_multiple)).to eq(@non_multiple)
       end
     end
 
