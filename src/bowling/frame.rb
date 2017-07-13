@@ -18,7 +18,7 @@ class Bowling_frame
     end
   end
 
-  def initialize(frame_number, rollA)
+  def initialize
     @rollA = Bowling_roll.new()
     @rollB = Bowling_roll.new()
     @rollC = Bowling_roll.new()

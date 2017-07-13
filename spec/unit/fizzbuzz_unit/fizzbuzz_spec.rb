@@ -15,7 +15,7 @@ describe Fizzbuzz do
       expect(fizzbuzz.upper_value).to eq(5)
     end
 
-    it 'has a method called fizzbuzz which takes one argument' do
+    it 'has a method called run which takes one argument' do
       expect(fizzbuzz).to respond_to(:run).with(1).argument
     end
 

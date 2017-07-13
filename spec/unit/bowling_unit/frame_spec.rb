@@ -2,7 +2,7 @@ require 'spec_helper' #requires spec_helper file
 
 describe Bowling_frame do
 
-  let( :frame ){ Bowling_frame.new(1, Bowling_roll.new()) }
+  let( :frame ){ Bowling_frame.new()}
 
   it "exists" do
     expect(frame).to be_an_instance_of(Bowling_frame)
@@ -23,6 +23,7 @@ describe Bowling_frame do
   describe "#record_roll" do
     it "sets the score of the correct roll to the appropriate value" do
       expect{ frame.record_roll(frame.rollA, 8) }.to change{ frame.rollA.score }.from(0).to(8)
+      expect{ frame.record_roll(frame.rollB, 8) }.to change{ frame.rollB.score }.from(0).to(8)
     end
 
     it "sets the frame multiplier to 2 when a strike is bowled" do
@@ -30,8 +31,13 @@ describe Bowling_frame do
     end
 
     it "sets the frame multiplier to 1 when a spare is bowled" do
-      frame.record_roll( frame.rollA, 8 )
-      expect{ frame.record_roll(frame.rollB, 2) }.to change{ frame.multiplier }.from(nil).to(1)
+      frame.record_roll( frame.rollA, 9 )
+      expect{ frame.record_roll(frame.rollB, 1) }.to change{ frame.multiplier }.from(nil).to(1)
+    end
+
+    it "does not set a multiplier when the frame is not a strike or a spare" do
+      frame.record_roll(frame.rollA, 9)
+      expect{ frame.record_roll(frame.rollB, 0) }.not_to change{ frame.multiplier }
     end
   end
 

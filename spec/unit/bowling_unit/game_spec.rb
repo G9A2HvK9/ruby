@@ -9,9 +9,21 @@ describe Bowling_game do
   end
 
   describe "#new" do
+    it "instantiates with 10 frames, which are all instances of the frame class" do
+      expect( game.frame1 ).to be_an_instance_of( Bowling_frame )
+      expect( game.frame2 ).to be_an_instance_of( Bowling_frame )
+      expect( game.frame3 ).to be_an_instance_of( Bowling_frame )
+      expect( game.frame4 ).to be_an_instance_of( Bowling_frame )
+      expect( game.frame5 ).to be_an_instance_of( Bowling_frame )
+      expect( game.frame6 ).to be_an_instance_of( Bowling_frame )
+      expect( game.frame7 ).to be_an_instance_of( Bowling_frame )
+      expect( game.frame8 ).to be_an_instance_of( Bowling_frame )
+      expect( game.frame9 ).to be_an_instance_of( Bowling_frame )
+      expect( game.frame10 ).to be_an_instance_of( Bowling_frame)
+    end
 
   end
 
-  
+
 
 end
