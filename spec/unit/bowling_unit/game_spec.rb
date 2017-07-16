@@ -22,6 +22,10 @@ describe Bowling_game do
       expect( game.frame10 ).to be_an_instance_of( Bowling_frame)
     end
 
+  describe "#update_score" do
+    
+  end
+
   end
 
 
