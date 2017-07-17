@@ -4,8 +4,9 @@ class Bowling_game
 
 
   def play_roll(pins)
-    increase_roll_count(pins)
-    @score_hash[@roll_count] = pins
+    update_roll_count(pins)
+    create_roll_instance(pins)
+    @score_hash[@roll_count] = @current_roll
     update_pins(pins)
   end
 
@@ -25,12 +26,27 @@ class Bowling_game
     end
   end
 
-  def increase_roll_count(pins)
+  def update_roll_count(pins)
     if @roll_count.even? && pins == 10
       @roll_count += 2
     else
       @roll_count += 1
     end
+  end
+
+  def create_roll_instance(pins)
+    if @roll_count.even? && clear?(pins)
+      multiplier = 3
+    elsif !@roll_count.even? && clear?(pins)
+      multiplier = 1
+    else
+      multiplier = 0
+    end
+    @current_roll = Bowling_roll.new(pins, multiplier)
+  end
+
+  def clear?(pins)
+    @remaining_pins - pins == 0
   end
 
 end
