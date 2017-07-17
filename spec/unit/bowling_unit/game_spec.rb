@@ -38,6 +38,10 @@ describe Bowling_game do
     it "resets the pins after a strike is rolled" do
       expect{ game.play_roll(10) }.not_to change{ game.remaining_pins }
     end
+
+    it "pushes the result of each roll to a score hash" do
+      expect{ game.play_roll(5) }.to change{ game.score_hash[1] }.from(nil).to(5)
+    end
   end
 
 
