@@ -5,27 +5,39 @@ describe Bowling_game do
   let( :game ){ Bowling_game.new() }
 
   it "exists" do
-    expect(game).to be_an_instance_of(Bowling_game)
+    expect( game ).to be_an_instance_of( Bowling_game )
   end
 
-  describe "#new" do
-    it "instantiates with 10 frames, which are all instances of the frame class" do
-      expect( game.frame1 ).to be_an_instance_of( Bowling_frame )
-      expect( game.frame2 ).to be_an_instance_of( Bowling_frame )
-      expect( game.frame3 ).to be_an_instance_of( Bowling_frame )
-      expect( game.frame4 ).to be_an_instance_of( Bowling_frame )
-      expect( game.frame5 ).to be_an_instance_of( Bowling_frame )
-      expect( game.frame6 ).to be_an_instance_of( Bowling_frame )
-      expect( game.frame7 ).to be_an_instance_of( Bowling_frame )
-      expect( game.frame8 ).to be_an_instance_of( Bowling_frame )
-      expect( game.frame9 ).to be_an_instance_of( Bowling_frame )
-      expect( game.frame10 ).to be_an_instance_of( Bowling_frame)
+  describe "#play_roll(pins)" do
+    it "is an impactful function with 1 argument" do
+      expect( game ).to respond_to( :play_roll ).with(1).argument
     end
 
-  describe "#update_score" do
-    
-  end
+    it "adds 1 to the roll count when no strike was rolled on the first roll" do
+      expect{ game.play_roll(5) }.to change{ game.roll_count }.from(0).to(1)
+    end
 
+    it "adds 2 to the roll count when a strike was rolled on the first roll" do
+      expect{ game.play_roll(10) }.to change{ game.roll_count }.from(0).to(2)
+    end
+
+    it "adds 1 to the roll count when 10 pins topple on the second roll" do
+      game.play_roll(0)
+      expect{ game.play_roll(10) }.to change{ game.roll_count }.from(1).to(2)
+    end
+
+    it "dynamically updates the number of remaining_pins" do
+      expect{ game.play_roll(5) }.to change{ game.remaining_pins }.from(10).to(5)
+    end
+
+    it "resets the pins after the second roll" do
+      game.play_roll(2)
+      expect{ game.play_roll(3) }.to change{ game.remaining_pins }.from(8).to(10)
+    end
+
+    it "resets the pins after a strike is rolled" do
+      expect{ game.play_roll(10) }.not_to change{ game.remaining_pins }
+    end
   end
 
 
